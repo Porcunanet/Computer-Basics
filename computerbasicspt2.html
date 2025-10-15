@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Basics Part 2 - Intermediate Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px 60px;
+            max-width: 1200px;
+            width: 100%;
+            height: 650px;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2.2em;
+            color: #4a5568;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-list li {
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.5em;
+        }
+        
+        .bullet-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        button {
+            background: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slide-number {
+            color: white;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .session-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.7em;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #fef5e7;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 1.3em;
+        }
+        
+        .warning-box {
+            background: #fee;
+            border-left: 5px solid #e74c3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 1.3em;
+        }
+        
+        .success-box {
+            background: #eaffea;
+            border-left: 5px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 1.3em;
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+            text-align: center;
+            font-size: 1.4em;
+        }
+        
+        .box-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .scam-alert {
+            background: #fff5f5;
+            border: 3px solid #e53e3e;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        
+        .scam-title {
+            color: #e53e3e;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>Computer Basics</h1>
+            <h2>Part 2: Intermediate Skills</h2>
+            <p class="content center-text" style="font-size: 2em; margin-top: 40px;">
+                Building on what you've learned!
+            </p>
+            <p class="content center-text" style="font-size: 1.5em; margin-top: 20px; color: #667eea;">
+                Files • Photos • Video Calls • Online Safety
+            </p>
+        </div>
+
+        <!-- Slide 2: What We'll Learn -->
+        <div class="slide">
+            <h2>What We'll Learn Together</h2>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Organize your files and folders</li>
+                    <li>Work with photos and documents</li>
+                    <li>Video call with family and friends</li>
+                    <li>Stay safe from online scams</li>
+                    <li>Discover helpful websites</li>
+                </ul>
+                <div class="success-box" style="margin-top: 25px;">
+                    You already know the basics—now let's put them to practical use!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Session 1 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 1</div>
+            <h2>Files, Folders & Organization</h2>
+            <p class="content center-text" style="font-size: 1.8em;">
+                Learn to organize your digital life<br>
+                just like organizing a filing cabinet!
+            </p>
+        </div>
+
+        <!-- Slide 4: Files vs Folders -->
+        <div class="slide">
+            <h3>Files vs Folders</h3>
+            <div class="grid-2">
+                <div class="box">
+                    <div class="box-title">📄 File</div>
+                    A single item:<br>
+                    • A document<br>
+                    • A photo<br>
+                    • A video<br>
+                    • A song
+                </div>
+                <div class="box">
+                    <div class="box-title">📁 Folder</div>
+                    A container that holds files:<br>
+                    • Like a filing cabinet drawer<br>
+                    • Keeps things organized<br>
+                    • Can hold other folders too
+                </div>
+            </div>
+            <div class="highlight-box">
+                Think of it like this: Files are papers, folders are the folders you put them in!
+            </div>
+        </div>
+
+        <!-- Slide 5: Common Locations -->
+        <div class="slide">
+            <h3>Where Files Live on Your Computer</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Documents:</strong> Letters, bills, written files</li>
+                    <li><strong>Pictures:</strong> All your photos</li>
+                    <li><strong>Downloads:</strong> Things from the internet</li>
+                    <li><strong>Desktop:</strong> Quick access to files</li>
+                </ul>
+                <div class="highlight-box">
+                    These are the main "rooms" in your computer's house!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Creating Folders -->
+        <div class="slide">
+            <h3>Creating Your Own Folders</h3>
+            <div class="content">
+                <p style="margin-bottom: 20px; font-size: 1.5em;">Name folders clearly so you can find things later:</p>
+                <ul class="bullet-list">
+                    <li>"Family Photos 2024"</li>
+                    <li>"Medical Records"</li>
+                    <li>"Recipes"</li>
+                    <li>"Tax Documents 2024"</li>
+                </ul>
+                <div class="success-box">
+                    Good naming = Easy finding later!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Finding Files -->
+        <div class="slide">
+            <h3>Finding Lost Files</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Use the <strong>Search box</strong> - type what you're looking for</li>
+                    <li>Check <strong>Recent files</strong> - shows what you opened recently</li>
+                    <li>Look in <strong>Downloads</strong> - for things from internet</li>
+                    <li>Check the <strong>Desktop</strong> - maybe you saved it there</li>
+                </ul>
+                <div class="highlight-box">
+                    Can't find it? Use search! Type any word from the file name.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Session 2 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 2</div>
+            <h2>Working with Photos & Documents</h2>
+            <p class="content center-text" style="font-size: 1.8em;">
+                Today we'll organize photos,<br>
+                do simple editing, and share them!
+            </p>
+        </div>
+
+        <!-- Slide 9: Getting Photos on Computer -->
+        <div class="slide">
+            <h3>Getting Photos from Your Phone</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Connect phone with USB cable</li>
+                    <li>Computer will recognize your phone</li>
+                    <li>Copy photos to Pictures folder</li>
+                    <li>Organize by date or event</li>
+                </ul>
+                <div class="highlight-box">
+                    Your photos are safe on the computer - they won't disappear if phone breaks!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Organizing Photos -->
+        <div class="slide">
+            <h3>Organizing Your Photos</h3>
+            <div class="content">
+                <p style="margin-bottom: 20px; font-size: 1.5em;">Create albums by event or date:</p>
+                <ul class="bullet-list">
+                    <li>"Thanksgiving 2024"</li>
+                    <li>"Grandchildren Visits"</li>
+                    <li>"Garden Photos"</li>
+                    <li>"Vacation - Florida 2024"</li>
+                </ul>
+                <div class="success-box">
+                    Delete blurry or duplicate photos - it's okay to let them go!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Basic Photo Editing -->
+        <div class="slide">
+            <h3>Simple Photo Editing</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Rotate:</strong> Turn photo right-side up</li>
+                    <li><strong>Crop:</strong> Remove unwanted edges</li>
+                    <li><strong>Brightness:</strong> Make photo lighter or darker</li>
+                    <li><strong>Save as copy:</strong> Keep original safe!</li>
+                </ul>
+                <div class="highlight-box">
+                    Always keep the original photo - edit a copy instead!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Attaching Files to Email -->
+        <div class="slide">
+            <h3>Sharing Photos by Email</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Look for the paperclip or "Attach" button</li>
+                    <li>Find your photo in the folders</li>
+                    <li>Click to select it</li>
+                    <li>Click "Open" or "Attach"</li>
+                    <li>Photo appears in your email</li>
+                </ul>
+                <div class="highlight-box">
+                    You can attach multiple photos at once!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Session 3 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 3</div>
+            <h2>Video Calling Family & Friends</h2>
+            <p class="content center-text" style="font-size: 1.8em;">
+                See and talk to loved ones<br>
+                no matter how far away they are!
+            </p>
+        </div>
+
+        <!-- Slide 14: Video Calling Options -->
+        <div class="slide">
+            <h3>Video Calling Apps</h3>
+            <div class="grid-2">
+                <div class="box">
+                    <div class="box-title">Zoom</div>
+                    Great for group calls<br>
+                    Works on any device<br>
+                    Free for calls under 40 min
+                </div>
+                <div class="box">
+                    <div class="box-title">FaceTime</div>
+                    For Apple devices<br>
+                    (iPhone, iPad, Mac)<br>
+                    Very simple to use
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 20px;">
+                Ask your family which one they use - then use the same one!
+            </div>
+        </div>
+
+        <!-- Slide 15: Camera & Audio Setup -->
+        <div class="slide">
+            <h3>Before You Call: Test Your Setup</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Camera:</strong> Can you see yourself?</li>
+                    <li><strong>Microphone:</strong> Can you hear yourself?</li>
+                    <li><strong>Speakers/Headphones:</strong> Can you hear others?</li>
+                    <li><strong>Lighting:</strong> Face a window or light source</li>
+                </ul>
+                <div class="success-box">
+                    Test before the call so you're ready when family calls!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Making a Video Call -->
+        <div class="slide">
+            <h3>Making a Video Call</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Open the video calling app</li>
+                    <li>Find the person's name or use a link</li>
+                    <li>Click "Call" or "Join"</li>
+                    <li>Your camera and microphone turn on</li>
+                    <li>Wait for them to answer</li>
+                    <li>Smile and wave!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 17: During the Call -->
+        <div class="slide">
+            <h3>Important Buttons During Calls</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Mute button:</strong> Turns your microphone off/on</li>
+                    <li><strong>Video button:</strong> Turns your camera off/on</li>
+                    <li><strong>Volume:</strong> Makes call louder or quieter</li>
+                    <li><strong>End call button:</strong> Usually red, hangs up</li>
+                </ul>
+                <div class="highlight-box">
+                    If they can't hear you, check if you're muted (microphone has a line through it)
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Session 4 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 4</div>
+            <h2>Online Safety & Useful Resources</h2>
+            <p class="content center-text" style="font-size: 1.8em;">
+                Stay safe online and discover<br>
+                helpful websites for everyday life
+            </p>
+        </div>
+
+        <!-- Slide 19: Common Scams -->
+        <div class="slide">
+            <h3>Watch Out for These Scams</h3>
+            <div class="content">
+                <div class="scam-alert">
+                    <div class="scam-title">🚨 Fake Tech Support</div>
+                    "Your computer has a virus! Call this number now!"
+                </div>
+                <div class="scam-alert">
+                    <div class="scam-title">🚨 Phishing Emails</div>
+                    "Your bank account is locked. Click here immediately!"
+                </div>
+                <div class="scam-alert">
+                    <div class="scam-title">🚨 Prize Scams</div>
+                    "You've won $1 million! Send $500 to claim it!"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Scam Warning Signs -->
+        <div class="slide">
+            <h3>Red Flags - Signs of a Scam</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Urgent demands for money or information</li>
+                    <li>Asking for passwords or Social Security number</li>
+                    <li>Too good to be true offers</li>
+                    <li>Poor spelling and grammar</li>
+                    <li>Threats or pressure tactics</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>Remember:</strong> Real companies NEVER ask for your password!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: What to Do -->
+        <div class="slide">
+            <h3>If You Think It's a Scam</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Don't click</strong> any links</li>
+                    <li><strong>Don't call</strong> phone numbers in the message</li>
+                    <li><strong>Don't send</strong> money or gift cards</li>
+                    <li><strong>Don't share</strong> personal information</li>
+                    <li><strong>Do ask</strong> a family member or friend</li>
+                    <li><strong>Do report</strong> it and delete it</li>
+                </ul>
+                <div class="success-box">
+                    When in doubt, close it out! Better safe than sorry.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Password Safety -->
+        <div class="slide">
+            <h3>Creating Strong Passwords</h3>
+            <div class="content">
+                <p style="margin-bottom: 20px; font-size: 1.5em;">Good passwords have:</p>
+                <ul class="bullet-list">
+                    <li>At least 12 characters</li>
+                    <li>Mix of letters, numbers, and symbols</li>
+                    <li>Not your birthday or pet's name</li>
+                    <li>Different password for each important account</li>
+                </ul>
+                <div class="highlight-box">
+                    Example: MyGarden2024! or BlueBird$Sun7
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 23: Helpful Websites -->
+        <div class="slide">
+            <h3>Useful Websites to Explore</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Weather.com</strong> - Weather forecasts</li>
+                    <li><strong>YouTube.com</strong> - How-to videos, music</li>
+                    <li><strong>Google Maps</strong> - Directions anywhere</li>
+                    <li><strong>Medicare.gov</strong> - Health insurance info</li>
+                    <li><strong>Your library website</strong> - Free ebooks!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 24: Safe Online Shopping -->
+        <div class="slide">
+            <h3>Online Shopping Safety</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Look for the padlock icon in address bar</li>
+                    <li>Stick to known retailers (Amazon, Walmart, Target)</li>
+                    <li>Read reviews before buying</li>
+                    <li>Understand return policies</li>
+                    <li>Avoid deals that seem too cheap</li>
+                </ul>
+                <div class="warning-box">
+                    If a website looks suspicious or unprofessional, don't buy from it!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 25: Key Takeaways -->
+        <div class="slide">
+            <h2>What We've Learned</h2>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Organize files and folders</li>
+                    <li>Manage and edit photos</li>
+                    <li>Video call with family</li>
+                    <li>Recognize scams and stay safe</li>
+                    <li>Find helpful resources online</li>
+                </ul>
+                <div class="success-box" style="margin-top: 25px;">
+                    You've come so far! From basic clicks to video calls!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 26: Keep Learning -->
+        <div class="slide">
+            <h3>Continue Your Learning Journey</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Practice regularly - even 15 minutes a day</li>
+                    <li>Don't be afraid to explore and experiment</li>
+                    <li>Ask family members for help</li>
+                    <li>Visit your local library for more classes</li>
+                    <li>Remember: You can't break the computer!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 27: Resources for Continued Learning -->
+        <div class="slide">
+            <h3>Where to Get More Help</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Senior centers</strong> - Often have computer labs</li>
+                    <li><strong>Public libraries</strong> - Free classes and help</li>
+                    <li><strong>YouTube</strong> - Search "computer help for seniors"</li>
+                    <li><strong>Family members</strong> - Don't hesitate to ask!</li>
+                    <li><strong>Your classmates</strong> - Stay in touch and help each other</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 28: Congratulations -->
+        <div class="slide">
+            <h2><span class="emoji">🎉</span>Congratulations!<span class="emoji">🎉</span></h2>
+            <div class="content center-text">
+                <p style="font-size: 2em; margin: 30px 0;">
+                    You've completed<br>Computer Basics Part 2!
+                </p>
+                <p style="font-size: 1.6em; margin: 25px 0;">
+                    You now have the skills to:
+                </p>
+                <p style="font-size: 1.5em; line-height: 1.8;">
+                    ✓ Organize your digital life<br>
+                    ✓ Manage photos and memories<br>
+                    ✓ Connect with loved ones<br>
+                    ✓ Stay safe online
+                </p>
+                <p style="font-size: 1.8em; margin-top: 40px; color: #667eea; font-weight: bold;">
+                    Keep exploring and enjoying technology!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <div class="slide-number">
+            <span id="slideNum">1</span> / <span id="totalSlides">28</span>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <div class="navigation" style="justify-content: center; padding: 30px;">
+        <a href="computerbasicspt3.html">
+            <button>Continue to Part 3 →</button>
+        </a>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('slideNum').textContent = currentSlide + 1;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Basics for Seniors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .slide {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px 60px;
+            max-width: 1200px;
+            width: 100%;
+            height: 650px;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 2.2em;
+            color: #4a5568;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .content {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bullet-list li {
+            padding: 12px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.5em;
+        }
+        
+        .bullet-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        button {
+            background: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slide-number {
+            color: white;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .computer-parts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .part-box {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border: 3px solid #667eea;
+            text-align: center;
+            font-size: 1.7em;
+        }
+        
+        .part-name {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .session-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.7em;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #fef5e7;
+            border-left: 5px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 1.3em;
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <h1>Computer Basics</h1>
+            <h2>A Friendly Introduction</h2>
+            <p class="content center-text" style="font-size: 2em; margin-top: 40px;">
+                Welcome! Let's learn together.
+            </p>
+        </div>
+
+        <!-- Slide 2: Session 1 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 1</div>
+            <h2>Getting Started with Computers</h2>
+            <p class="content center-text" style="font-size: 2em;">
+                Today we'll learn about computer parts,<br>
+                the mouse, and the keyboard.
+            </p>
+        </div>
+
+        <!-- Slide 3: What is a Computer? -->
+        <div class="slide">
+            <h3>What is a Computer?</h3>
+            <div class="content">
+                <p style="margin-bottom: 40px;">A computer is a helpful tool that can:</p>
+                <ul class="bullet-list">
+                    <li>Help you stay in touch with family</li>
+                    <li>Find information quickly</li>
+                    <li>Manage photos and documents</li>
+                    <li>Provide entertainment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Computer Parts -->
+        <div class="slide">
+            <h3>Basic Computer Parts</h3>
+            <div class="computer-parts">
+                <div class="part-box">
+                    <div class="part-name">Monitor</div>
+                    The screen where you see everything
+                </div>
+                <div class="part-box">
+                    <div class="part-name">Keyboard</div>
+                    For typing letters and numbers
+                </div>
+                <div class="part-box">
+                    <div class="part-name">Mouse</div>
+                    For pointing and clicking
+                </div>
+                <div class="part-box">
+                    <div class="part-name">Computer Tower</div>
+                    The "brain" that does the work
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Using the Mouse -->
+        <div class="slide">
+            <h3>Using the Mouse</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Hold it gently</strong> - Rest your hand comfortably</li>
+                    <li><strong>Move slowly</strong> - The pointer follows your movement</li>
+                    <li><strong>Left click</strong> - Press the left button once</li>
+                    <li><strong>Double-click</strong> - Press left button twice quickly</li>
+                </ul>
+                <div class="highlight-box">
+                    Remember: Take your time. There's no rush!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: The Keyboard -->
+        <div class="slide">
+            <h3>Important Keyboard Keys</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Letter keys</strong> - For typing words</li>
+                    <li><strong>Space bar</strong> - The long key at the bottom</li>
+                    <li><strong>Enter</strong> - Moves to next line</li>
+                    <li><strong>Backspace</strong> - Deletes mistakes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Session 2 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 2</div>
+            <h2>Understanding the Desktop</h2>
+            <p class="content center-text" style="font-size: 2em;">
+                Today we'll explore the desktop,<br>
+                open programs, and start typing!
+            </p>
+        </div>
+
+        <!-- Slide 8: The Desktop -->
+        <div class="slide">
+            <h3>What is the Desktop?</h3>
+            <div class="content">
+                <p style="margin-bottom: 30px; font-size: 2em;">
+                    Think of it like the top of your real desk!
+                </p>
+                <ul class="bullet-list">
+                    <li><strong>Icons</strong> - Small pictures that open programs</li>
+                    <li><strong>Taskbar</strong> - The bar at the bottom of the screen</li>
+                    <li><strong>Start/Menu button</strong> - Opens the main menu</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Opening Programs -->
+        <div class="slide">
+            <h3>Opening and Closing Programs</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Double-click an icon to open a program</li>
+                    <li>Click the X button to close a program</li>
+                    <li>Minimize button makes it hide at the bottom</li>
+                    <li>Maximize button makes it fill the screen</li>
+                </ul>
+                <div class="highlight-box">
+                    Don't worry - you can't break the computer by clicking!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Word Processing -->
+        <div class="slide">
+            <h3>Your First Document</h3>
+            <div class="content">
+                <p style="margin-bottom: 30px; font-size: 2em;">
+                    Let's type a simple letter or note!
+                </p>
+                <ul class="bullet-list">
+                    <li>The blinking line shows where text appears</li>
+                    <li>Type slowly and carefully</li>
+                    <li>Use Backspace to fix mistakes</li>
+                    <li>Always save your work!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: Session 3 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 3</div>
+            <h2>Exploring the Internet</h2>
+            <p class="content center-text" style="font-size: 2em;">
+                Today we'll learn to browse the web<br>
+                and search for information safely.
+            </p>
+        </div>
+
+        <!-- Slide 12: What is the Internet? -->
+        <div class="slide">
+            <h3>What is the Internet?</h3>
+            <div class="content">
+                <p style="margin-bottom: 40px; font-size: 2em;">
+                    A worldwide network connecting millions of computers
+                </p>
+                <ul class="bullet-list">
+                    <li>Find information on any topic</li>
+                    <li>Stay in touch with family and friends</li>
+                    <li>Watch videos and read news</li>
+                    <li>Shop from home</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 13: Using a Browser -->
+        <div class="slide">
+            <h3>Your Web Browser</h3>
+            <div class="content">
+                <p style="margin-bottom: 30px;">The program that lets you visit websites:</p>
+                <ul class="bullet-list">
+                    <li><strong>Address bar</strong> - Where you type website addresses</li>
+                    <li><strong>Back button</strong> - Returns to previous page</li>
+                    <li><strong>Forward button</strong> - Goes forward again</li>
+                    <li><strong>Home button</strong> - Returns to start page</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 14: Searching Online -->
+        <div class="slide">
+            <h3>Searching for Information</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Go to Google or another search engine</li>
+                    <li>Type your question in simple words</li>
+                    <li>Click on results that look helpful</li>
+                    <li>Try different words if you don't find it</li>
+                </ul>
+                <div class="highlight-box">
+                    Example: "weather in my city" or "chocolate cake recipe"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Staying Safe Online -->
+        <div class="slide">
+            <h3>Internet Safety Tips</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li>Never share personal information with strangers</li>
+                    <li>Look for the padlock icon for secure sites</li>
+                    <li>Be careful with "too good to be true" offers</li>
+                    <li>Ask for help if something seems strange</li>
+                </ul>
+                <div class="highlight-box">
+                    When in doubt, ask!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Session 4 Intro -->
+        <div class="slide">
+            <div class="session-badge">SESSION 4</div>
+            <h2>Email & Staying Connected</h2>
+            <p class="content center-text" style="font-size: 2em;">
+                Today we'll learn to send and receive emails<br>
+                and stay in touch with loved ones.
+            </p>
+        </div>
+
+        <!-- Slide 17: What is Email? -->
+        <div class="slide">
+            <h3>Understanding Email</h3>
+            <div class="content">
+                <p style="margin-bottom: 40px; font-size: 2em;">
+                    Electronic mail - messages sent instantly online
+                </p>
+                <ul class="bullet-list">
+                    <li>Free and fast communication</li>
+                    <li>Send messages to anyone with an email address</li>
+                    <li>Attach photos and documents</li>
+                    <li>Keep in touch with family easily</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 18: Email Parts -->
+        <div class="slide">
+            <h3>Parts of an Email</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>To:</strong> The recipient's email address</li>
+                    <li><strong>Subject:</strong> What your email is about</li>
+                    <li><strong>Message:</strong> Your actual message</li>
+                    <li><strong>Send button:</strong> Sends your email</li>
+                </ul>
+                <div class="highlight-box">
+                    Always check before you send!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Managing Your Inbox -->
+        <div class="slide">
+            <h3>Your Email Inbox</h3>
+            <div class="content">
+                <ul class="bullet-list">
+                    <li><strong>Inbox</strong> - Where new emails arrive</li>
+                    <li><strong>Sent</strong> - Emails you've sent</li>
+                    <li><strong>Trash</strong> - Deleted emails</li>
+                    <li><strong>Reply</strong> - Respond to an email</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 20: Congratulations -->
+        <div class="slide">
+            <h2><span class="emoji">🎉</span>Congratulations!<span class="emoji">🎉</span></h2>
+            <div class="content center-text">
+                <p style="font-size: 2.2em; margin: 40px 0;">
+                    You've learned the basics of computers!
+                </p>
+                <p style="font-size: 1.8em; margin: 30px 0;">
+                    Remember: Practice makes perfect.<br>
+                    Don't be afraid to explore and try new things.
+                </p>
+                <p style="font-size: 2em; margin-top: 50px; color: #667eea; font-weight: bold;">
+                    Keep learning and have fun!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <div class="slide-number">
+            <span id="slideNum">1</span> / <span id="totalSlides">20</span>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <div class="navigation" style="justify-content: center; padding: 30px;">
+        <a href="computerbasicspt2.html">
+            <button>Continue to Part 2 →</button>
+        </a>
+    </div>
+
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('totalSlides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('slideNum').textContent = currentSlide + 1;
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
